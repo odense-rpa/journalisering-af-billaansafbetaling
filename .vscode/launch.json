@@ -22,7 +22,7 @@
             "console": "integratedTerminal",
             "justMyCode": false,
             "args": [
-                "--queue"
+                "--queue",                                
             ]
         }
     ]
