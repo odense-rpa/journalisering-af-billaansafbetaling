@@ -34,13 +34,8 @@ async def populate_queue(workqueue: Workqueue, directory: str, nexus: NexusClien
             except Exception as e:
                 logger.warning(f"Could not validate CPR {cpr} from file {filename}: {e}")
                 continue
+                       
                         
-            eksisterende_kødata = workqueue.get_item_by_reference(cpr, WorkItemStatus.NEW)
-            
-            if len(eksisterende_kødata) > 0:
-                logger.info(f"Element med CPR {cpr} findes allerede i køen, springer over")
-                continue
-            
             # Add item to queue
             data = {
                 "cpr": cpr,
@@ -103,7 +98,7 @@ async def process_workqueue(workqueue: Workqueue):
                     }
                 )
                 
-            except WorkItemError as e:
+            except Exception as e:
                 report(
                     report_id="journalisering-af-billaansafbetaling",
                     group="Manuelle",
@@ -145,6 +140,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--directory",
         help="Path to the directory containing files to process",
+        default="/mnt/rpa/Leverancer/Journalisering af billånsafbetaling"
     )
     parser.add_argument(
         "--queue",
