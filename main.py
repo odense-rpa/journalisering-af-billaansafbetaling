@@ -61,8 +61,9 @@ async def process_workqueue(workqueue: Workqueue):
 
                 nexus.forløb.opret_forløb(
                     borger=borger,
-                    grundforløb_navn="Sundhedsfagligt grundforløb",
-                    forløb_navn="Korrespondance  - Bilsag" # Dårlig naming med double mellemrum
+                    grundforløb_navn="Ældre og sundhedsfagligt grundforløb",
+                    forløb_navn="Sag SOFF: Støtte til bil"
+                    #"Korrespondance  - Bilsag" # Dårlig naming med double mellemrum
                 )
 
                 visning = nexus.borgere.hent_visning(borger)
@@ -70,7 +71,7 @@ async def process_workqueue(workqueue: Workqueue):
 
                 forløb = filter_by_path(
                     referencer,
-                    "/Sundhedsfagligt grundforløb/Korrespondance  - Bilsag",
+                    "/Ældre og sundhedsfagligt grundforløb/Sag SOFF: Støtte til bil",
                     active_pathways_only=True,
                 )
 
