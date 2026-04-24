@@ -62,7 +62,7 @@ async def process_workqueue(workqueue: Workqueue):
                 nexus.forløb.opret_forløb(
                     borger=borger,
                     grundforløb_navn="Ældre og sundhedsfagligt grundforløb",
-                    forløb_navn="Sag SOFF: Støtte til bil"
+                    forløb_navn="Sag SOFF: Støtte til bil"                    
                 )
 
                 visning = nexus.borgere.hent_visning(borger)
